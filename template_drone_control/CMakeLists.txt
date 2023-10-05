@@ -16,14 +16,20 @@ find_package(rclcpp REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(mavros_msgs REQUIRED)
 
+include_directories(
+  include
+  /opt/ros/foxy/include
+)
+
+
 # Declare a C++ executable
-add_executable(template_drone_control_node src/template_drone_control_node.cpp)
+add_executable(drone_control_node src/drone_control_node.cpp)
 
 # Specify libraries to link a library or executable target against
-ament_target_dependencies(template_drone_control_node rclcpp geometry_msgs mavros_msgs)
+ament_target_dependencies(drone_control_node rclcpp geometry_msgs mavros_msgs)
 
 # Install the executable
-install(TARGETS template_drone_control_node DESTINATION lib/${PROJECT_NAME})
+install(TARGETS drone_control_node DESTINATION lib/${PROJECT_NAME})
 
 # Ament package
 ament_package()

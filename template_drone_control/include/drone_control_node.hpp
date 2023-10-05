@@ -11,7 +11,7 @@ class DroneControlNode : public rclcpp::Node
 {
 public:
     DroneControlNode();
-    ~DroneControlNode();
+    // ~DroneControlNode();
 private:
     // ROS Subscribers
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr state_sub_;
@@ -28,6 +28,12 @@ private:
     void setupPublishers();
     void setupServices();
     void stateCallback(const mavros_msgs::msg::State::SharedPtr msg);
-    void setMode(string mode);
+    void setMode(std::string mode);
     void setArmStatus(bool value);
-}
+void setTOL(
+        float min_pitch = 0.0, 
+        float yaw = 0.0, 
+        float latitude = 0.0, 
+        float longitude = 0.0, 
+        float altitude = 0.0);
+};
